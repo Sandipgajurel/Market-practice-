@@ -1,0 +1,182 @@
+*{
+    margin: 0%;
+    padding: 0%;
+    box-sizing: border-box;
+    font-family: Arial,Helvetica,sans-serif;
+}
+
+.banner{
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(rgba(0,0,0,0.754), rgba(0,0,0,0.75)), url(images/productback.jpg);
+    background-size: cover;
+    background-position: center;
+    position: sticky;
+    top: 0%;
+   z-index: 5;
+}
+
+.navbar{
+    width: 85%;
+    margin: auto;
+    padding: 35px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo{
+    width: 129px;
+    cursor: pointer;
+}
+
+.city_select{
+    width: 250px;
+    margin-left: -20px;
+}
+.select i{
+    font-size: 15px;
+    transition: all 0.3s;
+}
+.select{
+    width: 100%;
+    padding: 10px 10px;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 6px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 2px solid black;
+}
+.option{
+    display: flex;
+    padding: 10px;
+    width: 100px;
+    cursor: pointer;
+}
+.option:hover{
+      background-color: #c7dcff;
+}
+.option p{
+    margin-left: 10px;
+    color: #444444;
+}
+.option i{
+    color: #839a9c;
+}
+.option_box{
+    box-shadow: 0 0 10px grey;
+    background-color: white; 
+    display: none;
+    position: absolute;
+    top: 60px;
+}
+.hidden{
+    display: block;
+}
+.roted{
+  transform: rotate(180deg);
+}
+
+.navbar ul li{
+    list-style: none;
+    display: inline-block;
+    margin: 0 20px; 
+    position: relative;
+}
+
+.navbar ul li a{
+    text-decoration: none;
+    color: bisque;
+    text-transform: uppercase;
+}
+
+.navbar ul li::after{
+    content: '';
+    height: 3px;
+    width: 0%;
+    background: coral;
+    position: absolute;
+    left: 0;
+    bottom: -10px;
+    transition: 0.5s;
+}
+
+.navbar ul li:hover:after{
+    width: 100%;
+}
+
+/* <!-- =============================== * product* ============================================ --> */
+
+
+
+
+
+
+.First_row{
+    display: flex;
+    justify-content: space-evenly;
+    width: 1200px;
+    margin: auto;
+    margin-top: 35px;
+}
+.box img{
+width: 250px;
+}
+.box{
+    border: 1px solid rgb(197, 196, 196);
+    width: 260px;
+    height: 230px;
+    cursor: pointer;
+}
+.box:hover{
+    border: 1px solid rgb(138, 137, 139);
+}
+.box a{
+    text-decoration: none;
+    color: black;
+}
+.box h2{
+    padding: 5px 0 0 20px;
+}
+.box p{
+    padding: 0 0 10px 20px ;
+    color: #6f8a94;
+    font-size: 14px;
+}
+.addres_data {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+}
+.addres_data p{
+    font-size: 11px;
+    margin-right: 10px;
+}
+
+
+
+
+
+/* <!-- =============================== * lode more * ============================================ --> */
+
+
+
+.LOde_more button{
+    margin: 50px auto;
+    padding: 8px 16px ;
+    border-radius: 6px;
+    background-color: white;
+    cursor: pointer;
+    font-size: 16px;
+    display: block;
+    transition: all 0.5s;
+    border: 2px solid black;
+}
+.LOde_more button:hover{
+    border: 4px solid black;
+}
+#lode_more_products_id{
+   display: none;
+}

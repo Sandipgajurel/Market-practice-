@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="login.css">
+    <title>LogIn/Register</title>
+</head>
+<body>
+
+    <div class="banner">
+        <div class="navbar">
+            <img src="images/logo.PNG" class="logo">
+
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">AboutUs</a></li>
+                <li><a href="product.html">Products</a></li>
+                <li><a href="">Profile</a></li>
+                <li><a href="login.html">LogIn/Register</a></li>
+            </ul>
+
+        </div>
+
+        <div class="hero">
+            <div class="form-box">
+                <div class="button-box">
+                    <div id="btn"></div>
+                    <button type="button" class="toggle-btn" onclick="login()" >Log In</button>
+                    <button type="button" class="toggle-btn" onclick="register()" >Register</button>
+
+                </div>
+                <div class="social-icons">
+                    <img src="images/fb.png">
+                    <img src="images/tw.png">
+                    <img src="images/gp.png">
+                </div>
+
+                <form id="login" class="input-group">
+                    <input id="email" type="email" class="input-field" placeholder="email" required>
+                    <input id="password" type="text" class="input-field" placeholder="Enter Password" required>
+                    <input type="checkbox" class="check-box"><span>Remember Password</span>
+                    <button type="submit" onclick="userlogin()" class="submit-btn">Log In</button>
+
+                </form>
+
+                <form id="register" class="input-group" onsubmit="signup()">
+                    <input id="name" type="text" class="input-field" placeholder="Name" required>
+                    <input id="email" type="email" class="input-field" placeholder="Email ID" required>
+                    <input id="address" type="text" class="input-field" placeholder="Address" required>
+                    <input id="password" type="text" class="input-field" placeholder="Enter Password" required>
+                    <!-- <input type="checkbox" class="check-box"><span>I agree to the terms and conditions.</span> -->
+                    <button type="submit"  class="submit-btn">Register</button>
+                    
+                </form>
+
+            </div>
+
+
+        </div>
+        </div>
+    </div>
+    <script>
+        var x = document.getElementById("login");
+        var y = document.getElementById("register");
+        var z = document.getElementById("btn");
+
+        const baseurl = 'http:/localhost:3301/'
+        
+    
+
+        function register(){
+        x.style.left = "-300px";
+        y.style.left = "50px";
+        z.style.left = "110px";
+        }
+
+        function login(){
+            x.style.left = "50px";
+            y.style.left = "450px";
+            z.style.left = "0px";
+            }
+
+    </script>
+    <script>
+
+function signup(req, res, next){
+    var name = document.getElementById("name").value;
+    var email = document.getElementById("email").value;
+    var address = document.getElementById("address").value;
+    var password = document.getElementById("password").value;
+
+    let item={name, email, address,password}
+
+let result = fetch("http://localhost:3001/register",{
+  method:"POST",
+  body:JSON.stringify(item),
+  headers:{
+    "Content-Type":"application/json",
+    "Accept":"application/json"
+  }
+}).then((res) => {
+  if (res.status === 201) {
+    alert("user added sucessfully");
+  } 
+  else if(res.status === 500) {
+    alert("Email has been used already");
+  }
+  else {alert("something went wrong")}
+ 
+})
+}
+    </script>
+
+
+<script>
+  function userlogin(req, res, next) {
+    var email = document.getElementById("email").value;
+    var password = document.getElementById("password").value;
+    let item = { email, password }
+    let result =  fetch('http://localhost:3001/login', {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      },
+      body: JSON.stringify(item)
+    })
+ 
+    result =  result.json();
+    let user = (JSON.stringify(result.token))
+    localStorage.setItem("user", JSON.stringify(result.token))
+    localStorage.setItem("email", JSON.stringify(result.email))
+
+    if (user) {
+    ( alert('login sucess'), 
+    window.location.replace("/index.html")
+    ) 
+  } 
+  
+}
+//   if (user) {
+//     ( alert('login sucess'), 
+//     window.location.replace("/index.html")
+//     ) 
+//   } 
+
+</script>
+
+</body>
+</html>
